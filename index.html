@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 1 ЛР 11 </title>
+    <style>
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <a href="2index.html" target="_blank">Задание 2</a>
+    <H1 >Задание 1 </H1>
+    <div class="color-box"></div>
+    <div class="color-box"></div>
+    <div class="color-box"></div>
+    <div class="color-box"></div>
+    <div class="color-box"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const colorBoxes = document.querySelectorAll('.color-box');
+            const colors = ['#fce6b8', '#fcd686', '#f8c453', '#fabb32', '#ffb005']; // Массив оттенков одного цвета
+            let colorIndex = 0;
+
+            function changeColors() {
+                colorBoxes.forEach((box, index) => {
+                    box.style.backgroundColor = colors[(index + colorIndex) % colors.length];
+                });
+                colorIndex = (colorIndex + 1) % colors.length;
+            }
+
+            setInterval(changeColors, 1000); // Меняем цвет каждую секунду
+        });
+    </script>
+</body>
+</html>

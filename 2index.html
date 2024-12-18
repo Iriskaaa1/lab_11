@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 2 </title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh; 
+        }
+
+        #circle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border-radius: 50%;
+            transition: transform 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <a href="3index.html" target="_blank">Задание 3</a>
+    <H1 >Задание 2 </H1>
+    <div id="circle"></div>
+
+    <script>
+        const circle = document.getElementById('circle');
+        const moveCircle = () => {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const randomX = Math.random() * (windowWidth - circle.offsetWidth);
+            const randomY = Math.random() * (windowHeight - circle.offsetHeight);
+
+            circle.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        };
+
+        // Перемещаем круг каждый раз после завершения предыдущей анимации
+        circle.addEventListener('transitionend', moveCircle);
+
+        // Стартуем начальное движение
+        moveCircle();
+    </script>
+</body>
+</html>

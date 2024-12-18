@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 3 </title>
+</head>
+<body>
+    <a href="4index.html" target="_blank">Задание 4</a>
+    <H1 >Задание 3 </H1>
+<script>
+    // Функция для создания и возврата HTML-списка из массива
+    function createHtmlList(dataArray) {
+        const ulElement = document.createElement('ul');
+        dataArray.forEach(dataItem => {
+            const liElement = document.createElement('li');
+            liElement.textContent = dataItem;
+            ulElement.appendChild(liElement);
+        });
+
+        return ulElement;
+    }
+
+    const dataArray = [];
+    let userInput;
+    do {
+        userInput = prompt("Введите элемент списка (оставьте пустым, чтобы завершить):");
+        if (userInput !== '') {
+            dataArray.push(userInput);
+        }
+    } while (userInput !== '');
+
+    const htmlList = createHtmlList(dataArray);
+    document.body.appendChild(htmlList);
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 4 ЛР 11</title>
+    <style>
+       .post {
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center; 
+        }
+        .color1 { background-color: #f9f9f9; color: #2b2727; }
+        .color2 { background-color: #fcce52; color: #693a3a; }
+        .color3 { background-color: #bffa37; color: #833d3d; }
+
+        .post img {
+            display: block;
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+    <H1 >Задание 4 </H1>
+    <div id="posts-container"></div>
+
+    <script>
+        const images = [            
+            'img2.png',
+            'img3.png',
+            'img4.png','img5.png','img6.png'
+        ];
+        const sentences = [
+            'Это первое случайное предложение.',
+            'Вот еще одно случайное предложение.',
+            'На улице хорошая погода.',
+            'Это непервое случайное предложение.',
+            'Сегодня замечательный день.',
+            'Это случайное предложение.',
+            'Путешествие расширяет кругозор.',
+            'Музыка посреди дня.',
+            'Кофе бодрит по утрам.',
+            'Солнце светит ярко.'
+        ];
+
+        const K = parseInt(prompt('Введите количество постов:'));
+        const Kpr = parseInt(prompt('Введите количество предложений в каждом посте:'));
+
+        const posts = [];
+
+        for (let i = 0; i < K; i++) {
+            const postDiv = document.createElement('div');
+            postDiv.classList.add('post');
+            postDiv.classList.add(`color${Math.floor(Math.random() * 3) + 1}`); 
+
+            // Добавление изображения
+            const img = document.createElement('img');
+            img.src = images[Math.floor(Math.random() * images.length)];
+            postDiv.appendChild(img);
+
+            // Добавление текста
+            const p = document.createElement('p');
+            for (let j = 0; j < Kpr; j++) {
+                const randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
+                p.appendChild(document.createTextNode(randomSentence + " "));
+            }
+            postDiv.appendChild(p);
+
+            // Клонирование поста и добавление его в массив
+            const clonedPost = postDiv.cloneNode(true);
+            posts.push(clonedPost);
+        }
+
+        // Добавление всех постов на страницу
+        const postsContainer = document.getElementById('posts-container');
+        posts.forEach(post => {
+            postsContainer.appendChild(post);
+        });
+    </script>
+</body>
+</html>
